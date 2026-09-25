@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: #CCFF00; /* Neon Lime */
+  --color-brand-secondary: #00E0FF; /* Electric Blue */
+  --color-dark-bg: #050505;
+  --color-dark-surface: rgba(25, 25, 25, 0.7);
+  --color-dark-muted: #1A1A1A;
+  --color-dark-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-white font-sans antialiased overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: var(--color-dark-surface);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-dark-border);
+  }
+  
+  .glass-card {
+    background-color: var(--color-dark-surface);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-dark-border);
+    @apply rounded-[24px] p-5;
+  }
+  
+  .pill-tag {
+    @apply px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-brand-primary/15 text-brand-primary;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom animation for progress bar */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
